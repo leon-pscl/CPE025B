@@ -1,0 +1,61 @@
+.box {
+  min-width: 100px;
+  max-width: 300px;
+  min-height: 50px;
+  max-height: 200px;
+}
+
+/* Shorthand for setting equal padding on all sides */
+.element {
+  padding: 10px;
+  margin: 20px;
+}
+
+/* Setting individual padding values */
+.element {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  margin-top: 10px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+
+/* Setting a 2px solid red border */
+.element {
+  border: 2px solid red;
+}   
+
+.rounded-box {
+  background-color: lightblue;
+  background-image: url('https://edube.org/uploads/media/default/0001/04/red-flower.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 15px; /* Adding rounded corners */
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  height: 200px;
+}
+
+.background-size-box {
+  background-color: #add8e6;
+  background-image: url('https://edube.org/uploads/media/default/0001/04/flowers-banner.png');
+  background-size: cover; /* Ensuring the background covers the entire element */
+  background-clip: border-box; /* Defines how far the background extends */
+  padding: 30px;
+  border: 5px solid black;
+  margin: 20px;
+}
+
+div {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Adds a shadow to give a 3D effect */
+  width: 200px; /* Sets the width of the div */
+  height: 100px; /* Sets the height of the div */
+  background-color: lightgray; /* Sets the background color */
+  margin: 50px; /* Adds space around the div */
+  text-align: center; /* Centers the text horizontally */
+  line-height: 100px; /* Centers the text vertically */
+}

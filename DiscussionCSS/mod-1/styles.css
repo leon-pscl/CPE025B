@@ -3,6 +3,15 @@ h1{
   color: blue;
 }
 
+/*
+this is a comment 
+*/
+
 p {
   font-family: "Roboto", Arial, sans-serif;
+}
+
+#header {
+  font-size: 24px;
+  color: green;
 }

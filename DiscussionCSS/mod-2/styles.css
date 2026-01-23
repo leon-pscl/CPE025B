@@ -1,0 +1,33 @@
+h1 {
+  color: rgb(0, 128, 0); /* Dark Green using RGB */
+}
+
+p {
+  color: #FFdd22; /* Bright Orange using HEX */
+}
+p {
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.vivid {
+  color: hsl(210, 100%, 50%); /* Vivid Blue using HSL */
+}
+
+a {
+  color: pink; /* Pink color using named color */
+}
+
+body {
+  background-color: lightblue;
+}
+
+.header {
+  background-image: url("https://edube.org/uploads/media/default/0001/03/sunflowers_sunset_full.jpg");
+  height: 500px;
+  text-align: center;
+  color: white;
+}
+
+ul {
+  list-style-image: url('https://edube.org/uploads/media/default/0001/04/oedg_icon_regular.png');
+}

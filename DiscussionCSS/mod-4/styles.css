@@ -1,0 +1,30 @@
+.container {
+    overflow: hidden; /* Clearing floats */
+}
+
+.grid-item {
+    float: left; /* Float items to align side by side */
+    width: 50%; /* 2 columns, hence 50% width */
+    box-sizing: border-box; /* Includes padding and border in width calculation */
+    padding: 10px; /* Optional padding for spacing */
+}
+
+.navbar {
+    background-color: lightblue;
+    overflow: hidden; /* Clear the floats */
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    float: left;
+    padding: 10px 15px;
+}
+
+.menu-item:hover {
+    background-color: lightgrey;
+}

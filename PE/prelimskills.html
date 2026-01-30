@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random Music Production Survey</title>
+    </head>
+    <body style="background-color: #33BBAD; margin: 40px;">
+        <h1 style="text-align: center; font-family: Montserrat;"><strong>Random Music Production Survey</strong></h1>
+        <p style="text-align: center; font-family: Verdana, sans-serif;">
+            This survey asks some questions about your preferences as a producer!</p>
+        <form id="survey-form" style="max-width: 70rem; margin: auto;">
+            
+            <field id="name">
+                <label for="name" style="font-family: Verdana, sans-serif;">Name</label><br>
+                <input  type="text" 
+                        id="name-label" 
+                        name="yourname" 
+                        style="width: 300px; height: 25px; margin-bottom: 15px;" 
+                        placeholder="Enter your name" 
+                        required><br>
+            </field>
+            <field id="email">
+                <label for="email" style="font-family: Verdana, sans-serif;">Email Address</label><br>
+                <input  type="text" 
+                        id="email-label" 
+                        name="email" 
+                        style="width: 300px; height: 25px; margin-bottom: 15px;" 
+                        placeholder="Enter your email address"
+                        email="true" 
+                        required><br>
+            </field>
+            <field id="number">
+                <label for="plugin" style="font-family: Verdana, sans-serif;">Mobile Number</label><br>
+                <input  type="numeric"
+                    range="10" 
+                    id="number-label" 
+                    name="mobile" 
+                    style="width: 300px; height: 25px; margin-bottom: 15px;"
+                    placeholder="Mobile number" 
+                    required><br>
+            </field>
+            <field id="dropdown">
+                <label for="daw" style="font-family: Verdana, sans-serif;">Favorite DAW</label><br>
+                <select id="daw" name="daw" required>
+                    <option value="ableton">Ableton Live</option>
+                    <option value="logic">Logic Pro</option>
+                    <option value="protools">Pro Tools</option>
+                    <option value="cubase">Cubase</option>
+                    <option value="fl">FL Studio</option>
+                    <option value="reaperr">Reaper</option>
+                </select><br>
+            </field>
+            <field id="radio">
+                <p style="font-family: Verdana, sans-serif;">Preferred Genre to Produce</p>
+                <input type="radio" id="happyhardcore" name="genre" value="happyhardcore" required>
+                <label for="happyhardcore" style="font-family: Verdana, sans-serif;">Happy Hardcore</label><br>
+                <input type="radio" id="hiphop" name="genre" value="hiphop">
+                <label for="hiphop" style="font-family: Verdana, sans-serif;">Hip-Hop</label><br>
+                <input type="radio" id="futurebass" name="genre" value="futurebass">
+                <label for="futurebass" style="font-family: Verdana, sans-serif;">Future Bass</label><br>
+                <input type="radio" id="pop" name="genre" value="pop">
+                <label for="pop" style="font-family: Verdana, sans-serif;">Pop</label><br>
+                <input type="radio" id="classical" name="genre" value="classical">
+                <label for="classical" style="font-family: Verdana, sans-serif;">Classical</label><br>
+                <input type="radio" id="jpop" name="genre" value="J-pop">
+                <label for="jpop" style="font-family: Verdana, sans-serif;">J-Pop</label><br>
+            </field>
+            <field id="checkbox">
+                <p style="font-family: Verdana, sans-serif;">Favorite Free Plugin</p>
+                <input type="checkbox" id="vital" name="plugin" value="vital">
+                <label for="vital" style="font-family: Verdana, sans-serif;">Vital</label><br>
+                <input type="checkbox" id="je8086" name="plugin" value="je8086">
+                <label for="je8086" style="font-family: Verdana, sans-serif;">JE-8086</label><br>
+                <input type="checkbox" id="synth1" name="plugin" value="synth1">
+                <label for="synth1" style="font-family: Verdana, sans-serif;">Synth1</label><br>
+                <input type="checkbox" id="ott" name="plugin" value="ott">
+                <label for="ott" style="font-family: Verdana, sans-serif;">OTT</label><br>
+                <input type="checkbox" id="kHs" name="plugin" value="kHs">
+                <label for="kHs" style="font-family: Verdana, sans-serif;">kHs</label><br>
+            </field>
+            <field id="textarea">   
+                <label for="comments" style="font-family: Verdana, sans-serif;">Leave a message for Hatsune Miku</label><br>
+                <textarea id="comments" name="comments" rows="4" cols="50" style="margin-top: 10px; margin-bottom: 15px;"></textarea><br>
+
+            <input  id="submit" 
+                    type="submit" 
+                    value="Submit" 
+                    style="font-family: Verdana, sans-serif; width: 100px; height: 30px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        </form>
+    </body>
+</html>
+
+
+    
+
+
+
+    

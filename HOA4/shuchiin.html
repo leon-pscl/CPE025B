@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shuchi'in Academy</title>
+    <style>
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+            margin: 0;
+            padding: 1.25rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            color: #800000;
+            text-align: center;
+            margin-bottom: 0.625rem;
+            letter-spacing: 0.05rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 1.875rem;
+            font-style: italic;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-left: 0.4rem solid #800000;
+            border-radius: 0.5rem;
+            padding: 0.9375rem 1.25rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 0.25rem 0.625rem rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-0.1875rem);
+            box-shadow: 0 0.5rem 1.125rem rgba(0,0,0,0.12);
+        }
+
+        #mission-statement {
+            color: #800000;
+        }
+
+        #upcoming-events {
+            color: #b8860b;
+        }
+
+        ul {
+            padding-left: 1.25rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            padding: 0.375rem 0.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #f2f2f2;
+        }
+
+        .formal {
+            background-color: #faf6f2;
+        }
+
+        .date {
+            font-weight: bold;
+            color: #800000;
+        }
+
+        .contact-item {
+            padding: 0.375rem 0;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a {
+            color: #800000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            color: #888;
+            margin-top: 2.5rem;
+            font-size: 0.875rem;
+        }
+        .club-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+            gap: 1rem;
+        }
+
+        .club {
+            background: #fafafa;
+            border-radius: 0.5rem;
+            padding: 0.75rem 0.9rem;
+            border: 0.08rem solid #ddd;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .club:hover {
+            transform: translateY(-0.2rem);
+            box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.12);
+            border-color: #800000;
+        }
+
+        .club-title {
+            font-weight: bold;
+            color: #800000;
+            margin-bottom: 0.3rem;
+        }
+
+        .club-desc {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Shuchi'in Academy</h1>
+<p class="subtitle">"Where excellence shapes the leaders of tomorrow."</p>
+
+<div class="card">
+    <h2 id="mission-statement">Academy Philosophy</h2>
+    <p>
+        Shuchi'in Academy cultivates the intellect, discipline, and dignity of future leaders.
+        Students are expected to uphold tradition, honor academic achievement,
+        and embody the refined character befitting our prestigious institution.
+    </p>
+</div>
+
+<div class="card">
+    <h2 id="upcoming-events">Official Engagements</h2>
+    <ul>
+        <li>Entrance Examination Orientation – <span class="date">April 5</span></li>
+        <li class="formal" title="Formal Event">
+            Student Council General Assembly – <span class="date">April 18</span>
+        </li>
+        <li class="formal" data-event-type="formal" title="Formal Event">
+            Cultural Festival (Hoshin Festival) – <span class="date">May 12</span>
+        </li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Clubs & Student Organizations</h2>
+
+    <div class="club-grid">
+
+        <div class="club">
+            <div class="club-title">Soccer Club</div>
+            <div class="club-desc">
+                A competitive team emphasizing teamwork, endurance, and sportsmanship
+                in inter-academy matches.
+            </div>
+        </div>
+
+        <div class="club">
+            <div class="club-title">Archery Club</div>
+            <div class="club-desc">
+                A disciplined club focused on precision, concentration, and refined technique.
+            </div>
+        </div>
+
+        <div class="club">
+            <div class="club-title">Tabletop Games Club</div>
+            <div class="club-desc">
+                Strategic thinking and psychological battles through classic board games.
+            </div>
+        </div>
+
+        <div class="club">
+            <div class="club-title">Rhythmic Gymnastics Club</div>
+            <div class="club-desc">
+                Combines athletic skill and artistic performance through elegant
+                choreographed routines.
+            </div>
+        </div>
+
+        <div class="club">
+            <div class="club-title">Tea Ceremony Circle</div>
+            <div class="club-desc">
+                Preserving traditional etiquette and cultural refinement.
+            </div>
+        </div>
+
+        <div class="club">
+            <div class="club-title">Academic Research Club</div>
+            <div class="club-desc">
+                A gathering of top-ranking students pursuing advanced independent study.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="card">
+    <h2 id="contact">Administrative Office</h2>
+    <p class="contact-item" title="Email the academy office">
+        📧 Email:
+        <a href="mailto:office@shuchiin-academy.jp?subject=Academy%20Inquiry">
+            office@shuchiin-academy.jp
+        </a>
+    </p>
+    <p class="contact-item" title="Call the academy office">
+        ☎ Phone: 03-0000-0199
+    </p>
+</div>
+
+<footer>
+    © 2026 Shuchi'in Academy — Student Council Administration
+</footer>
+
+</body>
+</html>

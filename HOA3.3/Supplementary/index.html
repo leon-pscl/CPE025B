@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav-wrapper">
+            <h1>Toyota Philippines</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#models">Models</a></li>
+                    <li><a href="#test-drive">Test Drive</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="home">
+        <section class="product-container" id="models">
+            <article class="product">
+                <div class="product-image">
+                    <img src="Avanza.webp" alt="Toyota Avanza">
+                    <span class="badge">Toyota MPV</span>
+                </div>
+                <h2>Toyota Avanza</h2>
+                <p>Reliable 7-seater MPV known for fuel efficiency, flexibility and durability. Perfect for city driving and family adventures in the Philippines.</p>
+                <table class="product-specs">
+                    <tr><th>Feature</th><th>Details</th></tr>
+                    <tr><td>Engine</td><td>1.5L 4-cyl</td></tr>
+                    <tr><td>Power</td><td>106 PS</td></tr>
+                    <tr><td>Transmission</td><td>5-speed MT / IVT</td></tr>
+                    <tr><td>Seating</td><td>7 passengers</td></tr>
+                    <tr><td>Fuel Economy</td><td>16.2 km/l (city)</td></tr>
+                </table>
+            </article>
+
+            <article class="product">
+                <div class="product-image">
+                    <img src="Fortuner.webp" alt="Toyota Fortuner">
+                    <span class="badge">SUV</span>
+                </div>
+                <h2>Toyota Fortuner</h2>
+                <p>Powerful and versatile SUV with advanced off-road capabilities, spacious interior, and Toyota Safety Sense features.</p>
+                <table class="product-specs">
+                    <tr><th>Feature</th><th>Details</th></tr>
+                    <tr><td>Engine</td><td>2.8L Turbo Diesel</td></tr>
+                    <tr><td>Power</td><td>204 PS</td></tr>
+                    <tr><td>Torque</td><td>500 Nm</td></tr>
+                    <tr><td>Transmission</td><td>6-speed automatic</td></tr>
+                    <tr><td>Drive</td><td>4x4 i-FORCE</td></tr>
+                    <tr><td>Seating</td><td>7 passengers</td></tr>
+                </table>
+            </article>
+
+            <article class="product">
+                <div class="product-image">
+                    <img src="Supra.webp" alt="Toyota Supra">
+                    <span class="badge">GR Series</span>
+                </div>
+                <h2>Toyota GR Supra</h2>
+                <p>High-performance sports car with a turbocharged 3.0L inline-6 engine, precise handling, and cutting-edge connectivity.</p>
+                <table class="product-specs">
+                    <tr><th>Feature</th><th>Details</th></tr>
+                    <tr><td>Engine</td><td>3.0L inline-6 Turbo</td></tr>
+                    <tr><td>Power</td><td>335 PS</td></tr>
+                    <tr><td>0-100 km/h</td><td>4.1s</td></tr>
+                    <tr><td>Transmission</td><td>8-speed automatic</td></tr>
+                    <tr><td>Drive</td><td>RWD</td></tr>
+                </table>
+            </article>
+        </section>
+
+        <section class="contact-form" id="contact">
+            <form>
+                <fieldset>
+                    <legend>Request a Test Drive</legend>
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <label for="model">Preferred Model:</label>
+                    <input type="text" id="model" name="model" placeholder="GR Supra, Prius, RAV4">
+                    <button type="submit">Submit Request</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 Toyota Motor Philippines. Discover the new standard in mobility.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,207 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    margin: 0;
+    color: #1f2a44;
+    background: radial-gradient(circle at 20% 0%, #e8eef6 0%, #d4dfea 45%, #c6d3e1 100%);
+}
+
+/* Header styles */
+header {
+    background-color: #101f36;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 3px 12px rgba(0, 17, 40, 0.35);
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+}
+
+.nav-wrapper h1 {
+    color: #ff0600;
+    margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: #d7e1f5;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+main {
+    min-height: calc(100vh - 170px);
+    padding: 110px 20px 80px;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #0f1f35;
+    color: #d8e4f6;
+    padding: 14px 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #1a2e54;
+}
+
+.product h2 {
+    color: #0b1f3e;
+    font-size: 1.3rem;
+    margin: 12px 0 8px;
+}
+
+.product p {
+    color: #3f4d71;
+    margin: 0 0 14px;
+}
+
+.product .badge {
+    background: #e60012;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.product {
+    border: 1px solid #b8c7dc;
+    border-radius: 14px;
+    margin: 12px;
+    padding: 18px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 24px rgba(12, 27, 55, 0.1);
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.product-image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-specs th,
+.product-specs td {
+    border: 1px solid #e1e7f0;
+    padding: 10px;
+    font-size: 0.92rem;
+}
+
+.product-specs tr:nth-child(even) {
+    background-color: #f5f8fd;
+}
+
+.product-specs tr:hover {
+    background-color: #eaf0fb;
+}
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 30px;
+}
+
+.contact-form form {
+    border: 1px solid #9fb5d2;
+    border-radius: 12px;
+    width: min(100%, 460px);
+    padding: 20px;
+    background: #fbfdff;
+    box-shadow: 0 9px 24px rgba(12, 27, 55, 0.15);
+    box-sizing: border-box;
+}
+
+.contact-form fieldset {
+    border: none;
+}
+
+.contact-form legend {
+    font-size: 1.1rem;
+    color: #122142;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.contact-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cfdaf0;
+    border-radius: 6px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    font-size: 0.94rem;
+    color: #0f2241;
+}
+
+.contact-form button {
+    background-color: #e60012;
+    color: white;
+    padding: 11px 22px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #c50010;
+}
+
+@media (max-width: 760px) {
+    .product-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    header nav ul {
+        gap: 10px;
+    }
+}

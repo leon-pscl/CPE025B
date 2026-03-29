@@ -1,48 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.textStyle}>Team Name</Text>
-      <View>
-        <Text style={styles.memberBlue}>Ken Leonard Pascual</Text>
-        <Button title="Tap me!" color="green" />
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.textInput} placeholder='Your course goal!' />
+        <Button title='ADD GOAL' />
       </View>
-      <Text style={styles.memberRed}>Member 2</Text>
-      <Text style={styles.memberRed}>Member 3</Text>
-      <StatusBar style="auto" />
+      <View style={styles.goalsContainer}>
+        <Text>List of Goals</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    paddingTop: 50,
+    paddingHorizontal: 16,
+  },
+  inputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc',
   },
-  member: {
-    margin: 16,
-    padding: 16,
+  goalsContainer: {
+    flex: 5,
   },
-  memberBlue: {
-    margin: 16,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: 'blue',
-  },
-  memberRed: {
-    margin: 16,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: 'red',
-  },
-  textStyle: {
-    backgroundColor: 'blue',
-    color: 'white',
-    margin: 16,
-    padding: 16,
+  textInput: {
+    borderWidth: 2,
+    borderColor: '#cccccc',
+    width: '70%',
+    marginRight: 8,
+    padding: 13,
   },
 });

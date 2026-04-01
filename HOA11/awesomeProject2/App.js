@@ -1,5 +1,6 @@
+import GoalItem from './components/GoalItem.js';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, StatusBar } from 'react-native';
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState('');
@@ -13,7 +14,7 @@ export default function App() {
     if (enteredGoalText.trim().length === 0) return;
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
-      { text: enteredGoalText, id: Math.random().toString() },
+      { text: enteredGoalText, key: Math.random().toString() },
     ]);
     setEnteredGoalText('');
   };
@@ -53,16 +54,15 @@ export default function App() {
       </View>
 
       {/* Goals List */}
-      <ScrollView style={styles.goalsContainer} showsVerticalScrollIndicator={false}>
-        {courseGoals.map((goal, index) => (
-          <View key={goal.id} style={styles.goalItem}>
-            <View style={styles.goalIndex}>
-              <Text style={styles.goalIndexText}>{index + 1}</Text>
-            </View>
-            <Text style={styles.goalText}>{goal.text}</Text>
-          </View>
-        ))}
-      </ScrollView>
+      <View style={styles.goalListContainer}>
+        <FlatList
+          data={courseGoals}
+          renderItem={(itemData) => (
+            <GoalItem text={itemData.item.text} index={itemData.index} />
+          )}
+        />
+      </View>
+
     </View>
   );
 }
@@ -73,16 +73,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a1a2e',
     paddingTop: 48,
   },
-
-  // Header
   header: {
     alignItems: 'center',
     paddingVertical: 24,
     paddingHorizontal: 20,
-  },
-  headerEmoji: {
-    fontSize: 48,
-    marginBottom: 8,
   },
   headerTitle: {
     fontSize: 28,
@@ -96,8 +90,6 @@ const styles = StyleSheet.create({
     marginTop: 4,
     letterSpacing: 0.5,
   },
-
-  // Input Card
   inputCard: {
     backgroundColor: '#16213e',
     marginHorizontal: 20,
@@ -126,8 +118,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
   },
-
-  // Count row
   countRow: {
     paddingHorizontal: 24,
     paddingTop: 20,
@@ -138,8 +128,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 0.5,
   },
-
-  // Goals List
+  goalListContainer: {
+    flex: 1,
+  },
   goalsContainer: {
     flex: 1,
     paddingHorizontal: 20,

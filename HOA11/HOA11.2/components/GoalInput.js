@@ -24,9 +24,15 @@ function GoalInput(props) {
       />
       <Pressable
         onPress={addGoalHandler}
-        style={({ pressed }) => [
+        onLongPress={() => console.log('Long pressed!')}
+        onPressIn={() => console.log('Press started!')}
+        onPressOut={() => console.log('Press released!')}
+        delayLongPress={500}
+        android_ripple={{ color: '#c73652', borderless: false }}
+        style={({ pressed, hovered }) => [
           styles.addButton,
           pressed && styles.addButtonPressed,
+          hovered && styles.addButtonHovered,
         ]}
       >
         <Text style={styles.addButtonText}>+ Add Goal</Text>
@@ -62,8 +68,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addButtonPressed: {
-    backgroundColor: '#c73652',
+    backgroundColor: '#c03e3e',
     transform: [{ scale: 0.97 }],
+    opacity: 0.85,
+  },
+  addButtonHovered: {
+    backgroundColor: '#ff6b81',
+    transform: [{ scale: 1.02 }],
   },
   addButtonText: {
     color: '#ffffff',

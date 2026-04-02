@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { StyleSheet, View, StatusBar, Pressable, Text } from 'react-native';
+import { useState, useEffect } from 'react';
+import { StyleSheet, View, StatusBar, Pressable, Text, Modal } from 'react-native';
 import GoalHeader from './components/GoalHeader';
 import GoalInput from './components/GoalInput';
 import GoalCounter from './components/GoalCounter';
@@ -8,6 +8,13 @@ import GoalList from './components/GoalList';
 export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
   const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [warningVisible, setWarningVisible] = useState(false);
+
+  useEffect(() => {
+    if (courseGoals.length > 5) {
+      setWarningVisible(true);
+    }
+  }, [courseGoals]);
 
   function addGoalHandler(enteredGoalText) {
     setCourseGoals((currentCourseGoals) => [
@@ -34,6 +41,35 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <StatusBar barStyle="light-content" backgroundColor="#1a1a2e" />
+
+      {/* Warning Modal */}
+      <Modal
+        visible={warningVisible}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setWarningVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.warningTitle}>Slow Down!</Text>
+            <Text style={styles.warningMessage}>
+              You have more than 5 goals on your list. Taking on too much at once
+              can be overwhelming. Consider focusing on your most important goals
+              first before adding more!
+            </Text>
+            <Pressable
+              onPress={() => setWarningVisible(false)}
+              style={({ pressed }) => [
+                styles.warningButton,
+                pressed && styles.warningButtonPressed,
+              ]}
+            >
+              <Text style={styles.warningButtonText}>I Understand</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+
       <GoalHeader />
       <Pressable
         onPress={openModalHandler}
@@ -74,6 +110,59 @@ const styles = StyleSheet.create({
     opacity: 0.85,
   },
   openButtonText: {
+    color: '#ffffff',
+    fontSize: 15,
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+  },
+
+  // Warning Modal
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    backgroundColor: '#16213e',
+    borderRadius: 20,
+    padding: 32,
+    width: '80%',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#e94560',
+  },
+  warningEmoji: {
+    fontSize: 48,
+    marginBottom: 12,
+  },
+  warningTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#e94560',
+    marginBottom: 12,
+    letterSpacing: 1,
+  },
+  warningMessage: {
+    fontSize: 14,
+    color: '#888',
+    textAlign: 'center',
+    lineHeight: 22,
+    marginBottom: 24,
+  },
+  warningButton: {
+    backgroundColor: '#e94560',
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    alignItems: 'center',
+  },
+  warningButtonPressed: {
+    backgroundColor: '#c73652',
+    transform: [{ scale: 0.97 }],
+    opacity: 0.85,
+  },
+  warningButtonText: {
     color: '#ffffff',
     fontSize: 15,
     fontWeight: 'bold',

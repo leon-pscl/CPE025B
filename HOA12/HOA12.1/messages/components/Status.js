@@ -1,11 +1,30 @@
 import Constants from 'expo-constants';
+import NetInfo from '@react-native-community/netinfo';
 import { Platform, StatusBar, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+
+const statusHeight = Constants.statusBarHeight;
 
 export default class Status extends React.Component {
   state = {
     info: null,
   };
+
+  componentDidMount() {
+    NetInfo.fetch().then((state) => {
+      this.setState({ info: state.type });
+    });
+
+    this.subscription = NetInfo.addEventListener((state) => {
+      this.setState({ info: state.type });
+    });
+  }
+
+  componentWillUnmount() {
+    if (this.subscription) {
+      this.subscription();
+    }
+  }
 
   render() {
     const { info } = this.state;
@@ -41,8 +60,6 @@ export default class Status extends React.Component {
     return messageContainer;
   }
 }
-
-const statusHeight = Platform.OS === 'ios' ? Constants.statusBarHeight : 0;
 
 const styles = StyleSheet.create({
   status: {

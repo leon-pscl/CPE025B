@@ -1,40 +1,153 @@
-import { useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
-  KeyboardAvoidingView,
-  Platform,
+  Alert,
+  Image,
+  TouchableHighlight,
+  BackHandler,
 } from 'react-native';
 import Status from './components/Status';
 import MessageList from './components/MessageList';
 import Toolbar from './components/Toolbar';
 import ImageGrid from './components/ImageGrid';
+import {
+  createImageMessage,
+  createTextMessage,
+} from './utils/MessageUtils';
 
-export default function App() {
-  const [messages, setMessages] = useState([]);
-  const [fullscreenImage, setFullscreenImage] = useState(null);
-  const [isInputFocused, setIsInputFocused] = useState(false);
+export default class App extends React.Component {
+  state = {
+    messages: [
+      createImageMessage('https://unsplash.it/300/300'),
+      createTextMessage('World'),
+      createTextMessage('Hello'),
+    ],
+    fullscreenImageId: null,
+  };
 
-  return (
-    <View style={styles.container}>
-      <Status />
-      <KeyboardAvoidingView
-        style={styles.content}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+  componentDidMount() {
+    this.subscription = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => {
+        const { fullscreenImageId } = this.state;
+        if (fullscreenImageId) {
+          this.dismissFullscreenImage();
+          return true;
+        }
+        return false;
+      }
+    );
+  }
+
+  componentWillUnmount() {
+    this.subscription.remove();
+  }
+
+  dismissFullscreenImage = () => {
+    this.setState({ fullscreenImageId: null });
+  };
+
+  handlePressMessage = ({ id, type }) => {
+    switch (type) {
+      case 'text':
+        Alert.alert(
+          'Delete Message',
+          'Are you sure you want to delete this message?',
+          [
+            {
+              text: 'Cancel',
+              style: 'cancel',
+            },
+            {
+              text: 'Delete',
+              style: 'destructive',
+              onPress: () => this.deleteMessage(id),
+            },
+          ],
+        );
+        break;
+      case 'image':
+        this.setState({ fullscreenImageId: id });
+        break;
+      default:
+        break;
+    }
+  };
+
+  deleteMessage = (id) => {
+    const { messages } = this.state;
+    this.setState({
+      messages: messages.filter((message) => message.id !== id),
+    });
+  };
+
+  renderMessageList() {
+    const { messages } = this.state;
+
+    return (
+      <View style={styles.content}>
+        <MessageList
+          messages={messages}
+          onPressMessage={this.handlePressMessage}
+        />
+      </View>
+    );
+  }
+
+  renderFullscreenImage = () => {
+    const { messages, fullscreenImageId } = this.state;
+
+    if (!fullscreenImageId) return null;
+
+    const image = messages.find(
+      (message) => message.id === fullscreenImageId
+    );
+
+    if (!image) return null;
+
+    const { uri } = image;
+
+    return (
+      <TouchableHighlight
+        style={styles.fullscreenOverlay}
+        onPress={this.dismissFullscreenImage}
       >
-        <MessageList messages={messages} />
-        <View style={styles.toolbar}>
-          <Toolbar
-            isFocused={isInputFocused}
-            onChangeFocus={setIsInputFocused}
-          />
-        </View>
-      </KeyboardAvoidingView>
+        <Image
+          style={styles.fullscreenImage}
+          source={{ uri }}
+        />
+      </TouchableHighlight>
+    );
+  };
+
+  renderToolbar() {
+    return (
+      <View style={styles.toolbar}>
+        <Toolbar />
+      </View>
+    );
+  }
+
+  renderInputMethodEditor() {
+    return (
       <View style={styles.inputMethodEditor}>
         <ImageGrid />
       </View>
-    </View>
-  );
+    );
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Status />
+        {this.renderMessageList()}
+        {this.renderToolbar()}
+        {this.renderInputMethodEditor()}
+        {this.renderFullscreenImage()}
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -54,5 +167,14 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: 'rgba(0,0,0,0.04)',
     backgroundColor: 'white',
+  },
+  fullscreenOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'black',
+    zIndex: 2,
+  },
+  fullscreenImage: {
+    flex: 1,
+    resizeMode: 'contain',
   },
 });

@@ -1,38 +1,116 @@
-import { useState } from 'react';
+import React from 'react';
 import {
   View,
   TextInput,
-  Pressable,
   Text,
   StyleSheet,
+  TouchableOpacity,
+  Pressable,
 } from 'react-native';
+
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Toolbar({ isFocused, onChangeFocus }) {
-  const [inputText, setInputText] = useState('');
+import PropTypes from 'prop-types';
 
-  return (
-    <View style={styles.toolbar}>
-      <Pressable style={styles.iconButton}>
-        <MaterialIcons name="photo" size={24} color="#888" />
-      </Pressable>
-      <Pressable style={styles.iconButton}>
-        <MaterialIcons name="location-on" size={24} color="#888" />
-      </Pressable>
-      <TextInput
-        style={styles.input}
-        placeholder="Type something!"
-        placeholderTextColor="#999"
-        value={inputText}
-        onChangeText={setInputText}
-        onFocus={() => onChangeFocus(true)}
-        onBlur={() => onChangeFocus(false)}
-      />
-      <Pressable style={styles.iconButton}>
-        <MaterialIcons name="send" size={24} color="#4FC3F7" />
-      </Pressable>
-    </View>
-  );
+const ToolbarButton = ({ title, onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <Text style={styles.button}>{title}</Text>
+  </TouchableOpacity>
+);
+
+ToolbarButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+};
+
+export default class Toolbar extends React.Component {
+  static propTypes = {
+    isFocused: PropTypes.bool.isRequired,
+    onChangeFocus: PropTypes.func,
+    onSubmit: PropTypes.func,
+    onPressCamera: PropTypes.func,
+    onPressLocation: PropTypes.func,
+  };
+
+  static defaultProps = {
+    onChangeFocus: () => {},
+    onSubmit: () => {},
+    onPressCamera: () => {},
+    onPressLocation: () => {},
+  };
+
+  state = {
+    text: '',
+  };
+
+  setInputRef = (ref) => {
+    this.input = ref;
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isFocused !== this.props.isFocused) {
+      if (nextProps.isFocused) {
+        this.input.focus();
+      } else {
+        this.input.blur();
+      }
+    }
+  }
+
+  handleChangeText = (text) => {
+    this.setState({ text });
+  };
+
+  handleSubmitEditing = () => {
+    const { onSubmit } = this.props;
+    const { text } = this.state;
+    if (!text) return;
+    onSubmit(text);
+    this.setState({ text: '' });
+  };
+
+  handleFocus = () => {
+    const { onChangeFocus } = this.props;
+    onChangeFocus(true);
+  };
+
+  handleBlur = () => {
+    const { onChangeFocus } = this.props;
+    onChangeFocus(false);
+  };
+
+  render() {
+    const { onPressCamera, onPressLocation } = this.props;
+    const { text } = this.state;
+
+    return (
+      <View style={styles.toolbar}>
+        <Pressable style={styles.iconButton} onPress={onPressCamera}>
+          <MaterialIcons name="photo" size={24} color="#888" />
+        </Pressable>
+        <Pressable style={styles.iconButton} onPress={onPressLocation}>
+          <MaterialIcons name="location-on" size={24} color="#888" />
+        </Pressable>
+        <View style={styles.inputContainer}>
+          <TextInput
+            ref={this.setInputRef}
+            style={styles.input}
+            underlineColorAndroid="transparent"
+            placeholder="Type something!"
+            blurOnSubmit={false}
+            value={text}
+            onChangeText={this.handleChangeText}
+            onSubmitEditing={this.handleSubmitEditing}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+          />
+        </View>
+        <Pressable style={styles.iconButton} onPress={this.handleSubmitEditing}>
+          <MaterialIcons name="send" size={24} color="#4FC3F7" />
+        </Pressable>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -48,13 +126,24 @@ const styles = StyleSheet.create({
   iconButton: {
     padding: 8,
   },
+  button: {
+    top: -2,
+    marginRight: 12,
+    fontSize: 20,
+    color: 'grey',
+  },
+  inputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.04)',
+    borderRadius: 16,
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    backgroundColor: 'rgba(0,0,0,0.02)',
+  },
   input: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    fontSize: 16,
-    marginHorizontal: 4,
+    fontSize: 18,
   },
 });

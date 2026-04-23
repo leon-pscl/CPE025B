@@ -1,13 +1,9 @@
 {
   "expo": {
-    "name": "HOA12",
-    "slug": "HOA12",
+    "name": "messages",
+    "slug": "messages",
     "version": "1.0.0",
     "orientation": "portrait",
-    "androidStatusBar": {
-      "barStyle": "dark-content",
-      "backgroundColor": "#FFFFFF"
-    },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,

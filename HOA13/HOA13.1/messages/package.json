@@ -1,5 +1,5 @@
 {
-  "name": "hoa12",
+  "name": "messages",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-native-community/netinfo": "11.5.2",
-    "expo": "^55.0.11",
-    "expo-constants": "~55.0.11",
+    "@react-native-community/netinfo": "^11.5.2",
+    "expo": "^55.0.17",
     "expo-status-bar": "~55.0.5",
-    "react": "19.2.0",
-    "react-native": "0.83.4"
+    "prop-types": "^15.8.1",
+    "react": "^19.2.0",
+    "react-native": "^0.83.6"
   },
   "private": true
 }

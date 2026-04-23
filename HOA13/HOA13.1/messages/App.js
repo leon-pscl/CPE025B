@@ -24,6 +24,7 @@ export default class App extends React.Component {
       createTextMessage('Hello'),
     ],
     fullscreenImageId: null,
+    isFocused: false,
   };
 
   componentDidMount() {
@@ -46,6 +47,18 @@ export default class App extends React.Component {
 
   dismissFullscreenImage = () => {
     this.setState({ fullscreenImageId: null });
+  };
+
+  handlePressCamera = () => {
+    this.setState({ isFocused: false });
+  };
+
+  handlePressLocation = () => {
+    this.setState({ isFocused: false });
+  };
+
+  handleChangeFocus = (isFocused) => {
+    this.setState({ isFocused });
   };
 
   handlePressMessage = ({ id, type }) => {
@@ -124,10 +137,22 @@ export default class App extends React.Component {
   renderToolbar() {
     return (
       <View style={styles.toolbar}>
-        <Toolbar />
+        <Toolbar
+          isFocused={this.state.isFocused}
+          onChangeFocus={this.handleChangeFocus}
+          onPressCamera={this.handlePressCamera}
+          onPressLocation={this.handlePressLocation}
+          onSubmit={this.handleSubmit}
+        />
       </View>
     );
   }
+
+  handleSubmit = (text) => {
+    this.setState({
+      messages: [createTextMessage(text), ...this.state.messages],
+    });
+  };
 
   renderInputMethodEditor() {
     return (

@@ -6,6 +6,7 @@ import {
   Image,
   TouchableHighlight,
   BackHandler,
+  Keyboard,
 } from 'react-native';
 import Status from './components/Status';
 import MessageList from './components/MessageList';
@@ -24,7 +25,7 @@ export default class App extends React.Component {
       createTextMessage('Hello'),
     ],
     fullscreenImageId: null,
-    isFocused: false,
+    isInputFocused: false,
   };
 
   componentDidMount() {
@@ -50,15 +51,15 @@ export default class App extends React.Component {
   };
 
   handlePressCamera = () => {
-    this.setState({ isFocused: false });
+    this.setState({ isInputFocused: false });
   };
 
   handlePressLocation = () => {
-    this.setState({ isFocused: false });
+    this.setState({ isInputFocused: false });
   };
 
   handleChangeFocus = (isFocused) => {
-    this.setState({ isFocused });
+    this.setState({ isInputFocused: isFocused });
   };
 
   handlePressMessage = ({ id, type }) => {
@@ -81,6 +82,7 @@ export default class App extends React.Component {
         );
         break;
       case 'image':
+        Keyboard.dismiss();
         this.setState({ fullscreenImageId: id });
         break;
       default:
@@ -135,10 +137,11 @@ export default class App extends React.Component {
   };
 
   renderToolbar() {
+    const { isInputFocused } = this.state;
     return (
       <View style={styles.toolbar}>
         <Toolbar
-          isFocused={this.state.isFocused}
+          isFocused={isInputFocused}
           onChangeFocus={this.handleChangeFocus}
           onPressCamera={this.handlePressCamera}
           onPressLocation={this.handlePressLocation}
